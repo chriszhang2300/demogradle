@@ -27,6 +27,11 @@ pipeline {
 		stage("Code coverage") {
 			steps {
 				  bat "./gradlew.bat jacocoTestReport"
+				   publishHTML (target: [
+					   reportDir: 'build/reports/jacoco/test/html',
+					   reportFiles: 'index.html',
+					   reportName: "JaCoCo Report"
+				  ])
 				  bat "./gradlew.bat jacocoTestCoverageVerification"
 			 }
 		}
