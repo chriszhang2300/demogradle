@@ -1,5 +1,8 @@
 pipeline {
      agent any
+	 triggers {
+		 pollSCM('* * * * *')
+	}
      stages {
 	 /*
         stage("Checkout") {
@@ -20,6 +23,13 @@ pipeline {
                 bat "./gradlew.bat test"
             }
         }
+		
+		stage("Code coverage") {
+			steps {
+				  sh "./gradlew.bat jacocoTestReport"
+				  sh "./gradlew.bat jacocoTestCoverageVerification"
+			 }
+}
           
      }     
 }
