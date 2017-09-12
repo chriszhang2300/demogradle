@@ -26,10 +26,10 @@ pipeline {
 		
 		stage("Code coverage") {
 			steps {
-				  sh "./gradlew.bat jacocoTestReport"
-				  sh "./gradlew.bat jacocoTestCoverageVerification"
+				  sh "./gradlew.bat test jacocoTestReport"
+
 			 }
-}
+		}
           
      }     
 }
